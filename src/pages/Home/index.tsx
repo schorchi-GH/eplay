@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react'
+
 import Banner from '../../components/Banner'
 import ProductsList from '../../components/ProductsList'
-
-import resident from '../../assets/images/resident.png'
-import diablo from '../../assets/images/diablo.png'
-import zelda from '../../assets/images/zelda.png'
-import star_wars from '../../assets/images/star_wars.png'
 
 export interface GalleryItem {
   type: 'image' | 'video'
@@ -18,12 +14,12 @@ export type Game = {
   description: string
   release_date?: string
   prices: {
-    current?: number
     discount?: number
     old?: number
+    current?: number
   }
   details: {
-    category: string[]
+    category: string
     system: string
     developer: string
     publisher: string
@@ -44,6 +40,10 @@ const Home = () => {
     fetch('https://fake-api-tau.vercel.app/api/eplay/promocoes')
       .then((res) => res.json())
       .then((res) => setPromocoes(res))
+
+    fetch('https://fake-api-tau.vercel.app/api/eplay/em-breve')
+      .then((res) => res.json())
+      .then((res) => setEmBreve(res))
   }, [])
 
   return (

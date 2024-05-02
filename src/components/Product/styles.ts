@@ -8,6 +8,13 @@ export const Card = styled.div`
   padding: 8px;
   position: relative;
 
+  img {
+    display: block;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
   ${TagContainer} {
     margin-right: 8px;
   }
@@ -15,9 +22,10 @@ export const Card = styled.div`
 
 export const Titulo = styled.h3`
   font-weight: bold;
-  font-size: 24px;
+  font-size: 16px;
   display: block;
-  margin: 16px 0 8px 0;
+  margin-top: 16px;
+  margin-bottom: 8px;
 `
 
 export const Descricao = styled.p`
