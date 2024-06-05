@@ -1,13 +1,16 @@
+import React from 'react'
 import { Game } from '../../pages/Home'
 import Product from '../Product'
 import { Container, List } from './styles'
 
+// Definindo os tipos de props que o componente ProductsList vai receber
 export type Props = {
   title: string
   background: 'gray' | 'black'
   games: Game[]
 }
 
+// Função para formatar o preço no formato de moeda brasileira
 export const formataPreco = (preco = 0) => {
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
@@ -15,7 +18,9 @@ export const formataPreco = (preco = 0) => {
   }).format(preco)
 }
 
+// Componente ProductsList
 const ProductsList = ({ title, background, games }: Props) => {
+  // Função para obter tags de um jogo
   const getGameTags = (game: Game) => {
     const tags = []
 
