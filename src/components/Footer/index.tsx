@@ -38,7 +38,7 @@ const Footer = () => (
       </FooterSection>
       <p>{currentYear} - &copy; E-PLAY Todos os direitos reservados.</p>
       <br />
-      <p>MADE WITH ♥ BY - s c h o r c h i -</p>
+      <p>made with ❤️ by SCHORCHI</p>
     </div>
   </Container>
 )
