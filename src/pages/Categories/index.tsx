@@ -9,94 +9,55 @@ import {
 } from '../../services/api'
 
 const Categories = () => {
-  const {
-    data: actionGames,
-    error: actionError,
-    isLoading: actionLoading
-  } = useGetActionGamesQuery()
-  const {
-    data: fightGames,
-    error: fightError,
-    isLoading: fightLoading
-  } = useGetFightGamesQuery()
-  const {
-    data: rpgGames,
-    error: rpgError,
-    isLoading: rpgLoading
-  } = useGetRpgGamesQuery()
-  const {
-    data: simulationGames,
-    error: simulationError,
-    isLoading: simulationLoading
-  } = useGetSimulationGamesQuery()
-  const {
-    data: sportGames,
-    error: sportError,
-    isLoading: sportLoading
-  } = useGetSportGamesQuery()
+  const { data: actionGames, isLoading: isLoadingAction } =
+    useGetActionGamesQuery()
+  const { data: fightGames, isLoading: isLoadingFight } =
+    useGetFightGamesQuery()
+  const { data: rpgGames, isLoading: isLoadingRpg } = useGetRpgGamesQuery()
+  const { data: simulationGames, isLoading: isLoadingSimulation } =
+    useGetSimulationGamesQuery()
+  const { data: sportGames, isLoading: isLoadingSports } =
+    useGetSportGamesQuery()
 
-  if (
-    actionLoading ||
-    fightLoading ||
-    rpgLoading ||
-    simulationLoading ||
-    sportLoading
-  ) {
-    console.log('Loading data...')
-    return <h4>Carregando</h4>
-  }
-
-  if (actionError || fightError || rpgError || simulationError || sportError) {
-    console.error('Error loading data:', {
-      actionError,
-      fightError,
-      rpgError,
-      simulationError,
-      sportError
-    })
-    return <h4>Erro ao carregar dados</h4>
-  }
-
-  if (actionGames && fightGames && rpgGames && simulationGames && sportGames) {
-    console.log('Data loaded successfully:', {
-      actionGames,
-      fightGames,
-      rpgGames,
-      simulationGames,
-      sportGames
-    })
-    return (
-      <>
-        <ProductsList
-          games={actionGames}
-          title="Ação"
-          background="black"
-          id="action"
-        />
-        <ProductsList
-          games={sportGames}
-          title="Esportes"
-          background="gray"
-          id="sports"
-        />
-        <ProductsList
-          games={fightGames}
-          title="Luta"
-          background="black"
-          id="fight"
-        />
-        <ProductsList games={rpgGames} title="RPG" background="gray" id="rpg" />
-        <ProductsList
-          games={simulationGames}
-          title="Simulação"
-          background="black"
-          id="simulation"
-        />
-      </>
-    )
-  }
-
-  return <h4>Carregando</h4>
+  return (
+    <>
+      <ProductsList
+        games={actionGames}
+        title="Ação"
+        background="black"
+        id="action"
+        isLoading={isLoadingAction}
+      />
+      <ProductsList
+        games={sportGames}
+        title="Esportes"
+        background="gray"
+        id="sports"
+        isLoading={isLoadingSports}
+      />
+      <ProductsList
+        games={fightGames}
+        title="Luta"
+        background="black"
+        id="fight"
+        isLoading={isLoadingFight}
+      />
+      <ProductsList
+        games={rpgGames}
+        title="RPG"
+        background="gray"
+        id="rpg"
+        isLoading={isLoadingRpg}
+      />
+      <ProductsList
+        games={simulationGames}
+        title="Simulação"
+        background="black"
+        id="simulation"
+        isLoading={isLoadingSimulation}
+      />
+    </>
+  )
 }
 
 export default Categories
